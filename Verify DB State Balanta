@@ -1,0 +1,134 @@
+/* 
+Name: Gabriela Balanta
+Date: 05-25-2026
+Assignment: 1.4 Project VerifyDBState.sql
+*/
+
+/*1.4 Project Verifying Database State Balanta      Question 1 users with access to database*/
+Select user_id,
+       username,
+       created,
+       password_change_date
+From user_users;
+
+/*1.4 Project Verifying Database State Balanta      Question 2 shows all tables in database */
+Select *
+From user_table;
+
+/*1.4 Project Verifying Database State Balanta       Question 3 Describe tables*/
+Describe ORDERS;
+Describe PRODUCTLIST;
+Describe REVIEWS;
+Describe STOREFRONT;
+Describe USERBASE;
+Describe USERLIBRARY;
+
+/*1.4 Project Verifying Database State Balanta       Question 4 Show all data in all tables */
+Select * From ORDERS;
+Select * From PRODUCTLIST;
+Select * From REVIEWS;
+Select * From STOREFRONT;
+Select * From USERBASE;
+Select * From USERLIBRARY;
+
+/*1.4 Project Verifying Database State Balanta       Question 5 Show constrains */
+Select table_name,
+       constraint_name,
+       constraint_type,
+       status
+From USER_CONSTRAINTS
+Where table_name = 'ORDERS' or table_name = 'PRODUCTLIST' 
+or table_name = 'REVIEWS' or table_name = 'STOREFRONT'
+ or table_name = 'USERBASE' or table_name = 'USERLIBRARY';
+
+/*1.4 Project Verifying Database State Balanta       Question 6  */
+Select view_name, 
+        text
+From USER_VIEWS;
+
+/*1.4 Project Verifying Database State Balanta       Question 7 */
+Select username
+From USERBASE
+Order By username Asc;
+
+/*1.4 Project Verifying Database State Balanta       Question 8 */
+Select firstname,
+        lastname,
+        username,
+        password,
+        email
+From USERBASE
+Where email Like '%@yahoo.com';
+
+/*1.4 Project Verifying Database State Balanta       Question 9*/
+Select username,
+        birthday,
+        walletfunds
+From USERBASE
+Where walletfunds < 25;
+
+
+/*1.4 Project Verifying Database State Balanta       Question 10 */
+Select userid,
+    productcode
+From USERLIBRARY
+Where hoursplayed > 100;
+
+/*1.4 Project Verifying Database State Balanta       Question 11 */
+Select productcode
+From USERLIBRARY
+Where hoursplayed < 10;
+
+/*1.4 Project Verifying Database State Balanta       Question 12 */
+Select Distinct publisher
+From productlist;
+
+/*1.4 Project Verifying Database State Balanta       Question 13 */
+Select productname,
+    releasedate,
+    publisher,
+    genre
+From productlist
+Order By genre;
+
+/*1.4 Project Verifying Database State Balanta       Question 14 */
+Select productcode,
+        publisher
+From productlist
+Where genre = 'Strategy';
+
+/*1.4 Project Verifying Database State Balanta       Question 15 */
+Select productcode,
+        description,
+        price
+From productlist
+Where price > 25
+Order By price DESC;
+
+/*1.4 Project Verifying Database State Balanta       Question 16 */
+Select inventoryid,
+        price
+From storefront
+Order By price ASC;
+
+/*1.4 Project Verifying Database State Balanta       Question 17 */
+Select productcode,
+        review
+From reviews
+Where rating = 1;
+
+/*1.4 Project Verifying Database State Balanta       Question 18 */
+Select productcode,
+        review
+From reviews
+Where rating >= 4;
+
+/*1.4 Project Verifying Database State Balanta       Question 19 */
+Select Distinct userid
+From orders;
+
+
+/*1.4 Project Verifying Database State Balanta       Question 20 */
+Select *
+From orders
+Order By purchasedate ASC;
